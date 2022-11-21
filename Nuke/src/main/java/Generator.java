@@ -1,9 +1,19 @@
-import java.util.HashSet;
-
 public class Generator {
-private float totalYieldinKwh;
+    private double totalYieldinKwh;
 
-    public Generator(float totalYieldinKwh) {
+    public Generator(double totalYieldinKwh) {
         this.totalYieldinKwh = totalYieldinKwh;
+    }
+
+    public Generator() {
+        this.totalYieldinKwh = 0;
+    }
+
+    public void addGenPowerToTotal(double power) {
+        this.totalYieldinKwh = this.totalYieldinKwh + power;
+    }
+
+    public double generateEnergy(double steam) {
+        return steam * 7.0;
     }
 }

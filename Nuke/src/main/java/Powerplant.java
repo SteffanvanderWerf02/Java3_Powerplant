@@ -10,7 +10,13 @@ public class Powerplant {
         this.coolingSystem = coolingSystem;
     }
 
-    public float run (float time, float temp) {
-        return 0;
+    public double run(int temp, int time) {
+        SplitResult resultReactor = reactor.runReactor(temp, time);
+
+        coolingSystem.abductResidualHeat(resultReactor.getRemainingHeat());
+        double genPowerInKwh = generator.generateEnergy(resultReactor.getSteam());
+        generator.addGenPowerToTotal(genPowerInKwh);
+
+        return genPowerInKwh;
     }
 }
