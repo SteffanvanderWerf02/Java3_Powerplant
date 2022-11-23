@@ -10,13 +10,13 @@ public class Powerplant {
         this.coolingSystem = coolingSystem;
     }
 
-    public double run(int temp, int time) {
-        SplitResult resultReactor = reactor.runReactor(temp, time);
+    public double run(int tempInKelvin, int timeInSeconds) {
+        SplitResult resultReactor = reactor.runReactor(tempInKelvin, timeInSeconds);
 
         coolingSystem.abductResidualHeat(resultReactor.getRemainingHeat());
-        double genPowerInKwh = generator.generateEnergy(resultReactor.getSteam());
-        generator.addGenPowerToTotal(genPowerInKwh);
 
-        return genPowerInKwh;
+        double kwh = generator.generateEnergy(resultReactor.getSteam());
+
+        return kwh;
     }
 }

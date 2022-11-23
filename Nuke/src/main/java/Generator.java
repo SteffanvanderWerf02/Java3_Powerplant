@@ -9,11 +9,16 @@ public class Generator {
         this.totalYieldinKwh = 0;
     }
 
-    public void addGenPowerToTotal(double power) {
+    private void addGenPowerToTotal(double power) {
         this.totalYieldinKwh = this.totalYieldinKwh + power;
     }
 
     public double generateEnergy(double steam) {
-        return steam * 7.0;
+        double kwh = steam * 7.0;
+
+        //add to total
+        addGenPowerToTotal(kwh);
+
+        return kwh;
     }
 }
