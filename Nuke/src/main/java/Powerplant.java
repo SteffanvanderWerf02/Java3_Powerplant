@@ -3,11 +3,14 @@ public class Powerplant {
     private Reactor reactor;
     private CoolingSystem coolingSystem;
 
+    private ControlRoom controlRoom;
 
-    public Powerplant(Generator generator, Reactor reactor, CoolingSystem coolingSystem) {
+
+    public Powerplant(Generator generator, Reactor reactor, CoolingSystem coolingSystem, ControlRoom controlRoom) {
         this.generator = generator;
         this.reactor = reactor;
         this.coolingSystem = coolingSystem;
+        this.controlRoom = controlRoom;
     }
 
     public double run(int tempInKelvin, int timeInSeconds) {
@@ -18,5 +21,9 @@ public class Powerplant {
         double kwh = generator.generateEnergy(resultReactor.getSteam());
 
         return kwh;
+    }
+
+    public boolean areWeGoingToDie() {
+        return !controlRoom.isNuclearReactorStable();
     }
 }

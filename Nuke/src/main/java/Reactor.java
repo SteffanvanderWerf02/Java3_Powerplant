@@ -1,10 +1,22 @@
 import java.util.HashSet;
 
-public class Reactor {
+public class Reactor implements Controlable {
     private HashSet<Core> cores;
 
     public Reactor() {
         this.cores = new HashSet<>();
+    }
+
+    public HashSet<Core> getCores() {
+        return this.cores;
+    }
+
+    public boolean addCores(Core core) {
+        return cores.add(core);
+    }
+
+    public boolean removeCore(Core core) {
+        return cores.remove(core);
     }
 
 
@@ -20,11 +32,14 @@ public class Reactor {
         return result;
     }
 
-    public boolean addCores(Core core) {
-        return cores.add(core);
-    }
+    @Override
+    public STATUS getStatus() {
+        for (Core core: this.cores) {
+            if (core.getRemainingPercentage() <= 0.2) {
+                return STATUS.NEEDS_ATTENTION;
+            }
+        }
 
-    public boolean removeCore(Core core) {
-        return cores.remove(core);
+        return STATUS.STABLE;
     }
 }

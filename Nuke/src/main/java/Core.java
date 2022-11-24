@@ -10,5 +10,11 @@ public abstract class Core {
         this.remainingPercentage = remainingPercentage;
     }
 
+    public double getRemainingPercentage() {
+        return this.remainingPercentage;
+    }
+    public void reduceCoreHealthPercentage(double percentage) {
+        this.remainingPercentage = this.remainingPercentage - percentage;
+    }
     public abstract SplitResult split(int tempInKelvin, int TimeInSeconds);
 }

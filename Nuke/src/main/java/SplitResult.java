@@ -19,7 +19,7 @@ public class SplitResult {
         this.remainingHeat = this.remainingHeat + addHeat;
     }
 
-    public void addSteam(double steam) {
-        this.steam = this.steam + steam;
+    public void addSteam(double addsteam) {
+        this.steam = this.steam + addsteam;
     }
 }
